@@ -1,5 +1,6 @@
 
 function eye(x, y, size) { 
+  push();
   translate(x, y);
   noStroke(); 
   fill(255)
@@ -7,21 +8,37 @@ function eye(x, y, size) {
   triangle(size, 0, 0, -size, 0, size);
   fill(0);
   rectMode(CENTER);
-  rect(0, 0, size * 0.09, size); 
+  rect(0, 0, size * 0.2, size); 
+  pop();
+}
+
+function face(x,y,wide, tall){
+  push();
+  noStroke(); 
+  strokeWeight(2);
+  fill(75,75,75)
+  ellipse(x, y, wide, tall );
+  pop();
 }
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(500, 600);
   background(30);
   fill(0);
-  stroke(255);
-  strokeWeight(2);
-  circle(195, 140, 260);
-  eye(120, 100, 40);
-  eye(150, 0, 40)
-  fill(255);
-  textStyle(BOLD)
-  textSize(32)
-  text("I have no mouth", -200, 230);
-  text("I must scream", -190, 270);
 }
+
+function draw(){
+
+
+  face(width/2, height/2-50, 300, 380);
+  eye(width/2-70, height/2-50, 40);
+  eye(width/2+70, height/2-50, 40);
+  
+  
+}
+
+  // fill(255);
+  // textStyle(BOLD)
+  // textSize(32)
+  // text("I have no mouth", -200, 230);
+  // text("I must scream", -190, 270);
