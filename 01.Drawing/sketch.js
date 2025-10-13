@@ -1,4 +1,4 @@
-let img;
+
 function eye(x, y, size) { 
   translate(x, y);
   noStroke(); 
@@ -11,7 +11,6 @@ function eye(x, y, size) {
 }
 
 function setup() {
-  grainImg = loadImage("C:\Users\Oreo\Downloads\grains.png");
   createCanvas(400, 400);
   background(30);
   fill(0);
@@ -25,5 +24,4 @@ function setup() {
   textSize(32)
   text("I have no mouth", -200, 230);
   text("I must scream", -190, 270);
-  image(grainImg, 0, 0);
 }
