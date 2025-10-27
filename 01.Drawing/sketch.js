@@ -102,24 +102,25 @@ function crosshair(x, y) {
   rect(0, 0, 260, 260);
   pop();
 }
-
+function preload() {
+  mp3 = loadSound('assets/static.mp3');
+}
 function setup() {
   createCanvas(2000, 1100);
   background(60);
   fill(0);
+  userStartAudio().then(() => {
+    mp3.setVolume(0.3);
+    mp3.loop();
+    });
 }
 
-function preload() {
-  ogg = loadSound('assets/static.ogg');   // path relative to index.html
-}
 
 
 function draw(){
   
   background(60);
   scream();
-  ogg.setVolume(0.01);   // optional
-  ogg.loop();
   rectMode(CENTER)
   fill(30)
   rect(width/2, height/2+200,450,630);
