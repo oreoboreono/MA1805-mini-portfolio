@@ -1,14 +1,45 @@
 
-function eye(x, y, size) { 
+function eye(x, y, size) {
   push();
   translate(x, y);
-  noStroke(); 
-  fill(255)
-  triangle(-size, 0, 0, -size, 0, size);
-  triangle(size, 0, 0, -size, 0, size);
+  noStroke();
+
+  //eye shape
+  fill(255);
+  triangle(-size - 50, 0, -50, -size, 0, size+20);
+  triangle(size + 50, 0, 50, -size, 0, size+20);
+  triangle(50, -size, -50, -size, 0, size+20);
+
+
+  
+
+  //pupil
+  //where eye to mouse
+  let dx = mouseX - x;
+  let dy = mouseY - y;
+  let angle = atan2(dy, dx);
+
+  // limit eye movement
+  let maxOffset = size * 0.85;        
+  let dist = min(maxOffset, mag(dx, dy)); 
+
+  let px = cos(angle) * dist;
+  let py = sin(angle) * dist;
+
+  
+
+  fill(255,60,60);
+  rectMode(CENTER);
+  rect(px, py, size * 0.7, size);   
+
+  fill(255,100,100);
+  rectMode(CENTER);
+  rect(px, py, size * 0.7, size);   
+
   fill(0);
   rectMode(CENTER);
-  rect(0, 0, size * 0.2, size); 
+  rect(px, py, size * 0.2, size*0.8);
+
   pop();
 }
 
@@ -22,17 +53,18 @@ function face(x,y,wide, tall){
 }
 
 function setup() {
-  createCanvas(500, 600);
+  createCanvas(2000, 1100);
   background(30);
   fill(0);
 }
 
 function draw(){
 
-
-  face(width/2, height/2-50, 300, 380);
-  eye(width/2-70, height/2-50, 40);
-  eye(width/2+70, height/2-50, 40);
+  eye(width/2-180, height/2,40)
+  eye(width/2+180, height/2,40)
+  // face(width/2, height/2-50, 300, 380);
+  // eye(width/2-70, height/2-50, 40);
+  // eye(width/2+70, height/2-50, 40);
   
   
 }
