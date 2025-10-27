@@ -62,7 +62,19 @@ function eye(x, y, size) {
   pop();
 }
 
+function scream(){
+  x = random(-300,400);
+  y = random(400,400);
 
+  for(let i = 0; i<15; i++){
+  fill(130,30,30);
+  textStyle(BOLD)
+  textSize(150);
+  text("PLEASE DON'T KILL ME", x,y-290+(i*150))
+  }
+
+
+}
 
 
 
@@ -82,7 +94,7 @@ function crosshair(x, y) {
   //center point
   circle(0,0,30)
 
-  /* ---- concentric rings ---- */
+  //rings
   noFill();
   stroke(255,0,0)
   strokeWeight(4);
@@ -97,7 +109,15 @@ function setup() {
   fill(0);
 }
 
+function preload() {
+  mp3 = loadSound('assets/song.mp3');   // path relative to index.html
+}
+
+
 function draw(){
+  
+  background(60);
+  scream();
   rectMode(CENTER)
   fill(30)
   rect(width/2, height/2+200,450,630);

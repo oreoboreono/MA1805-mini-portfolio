@@ -10,10 +10,10 @@ function scream(){
   y = random(200,200);
 
   for(let i = 0; i<10; i++){
-  fill(255,0,0);
+  fill(100,0,0);
   textStyle(BOLD)
   textSize(50);
-  text("LET ME SCREAM", x,y+(i*50))
+  text("PLEASE DON'T KILL ME", x,y+(i*50))
   }
 
 
