@@ -1,4 +1,5 @@
-// simple black rectangle eyebrow with white outline + rotation
+let check = false
+
 function eyebrow(x, y, size, angle = 0) {
   push();
   translate(x, y);   // position
@@ -110,15 +111,28 @@ function setup() {
   background(60);
   fill(0);
   userStartAudio().then(() => {
-    mp3.setVolume(0.3);
+    mp3.setVolume(0.4);
     mp3.loop();
     });
+  
+
+  
+
+}
+
+function mousePressed() {
+  // distance from mouse to circle centre
+  if (dist(mouseX, mouseY, width / 2, height / 2 - 300) <= 30) {
+    mp3.stop();
+    check = true;
+       // silence immediately
+  }
 }
 
 
 
 function draw(){
-  
+  if(check==false){
   background(60);
   scream();
   rectMode(CENTER)
@@ -156,6 +170,11 @@ function draw(){
   eyebrow(width/2-180, height/2-225,210,-30);
   eyebrow(width/2+180, height/2-225,210,30);
   crosshair(width/2, height/2-300)
+  }else{
+    background(20);
+    
+  }
+
   
 
   
