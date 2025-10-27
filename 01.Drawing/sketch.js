@@ -1,3 +1,49 @@
+// function rightEyebrow(x, y, size) {
+//   push();
+//   translate(x, y) 
+ 
+//   noStroke();
+//   fill(255);
+//   rect(0, 0, size * 1.3, size * 0.2);
+//   fill(255);
+//   noStroke();
+//   triangle(-size/3, 40, 0, -size/3, 0, 40);
+//   triangle(size/3+250, 100, 200, size/3-40, 260, 0);
+
+//   noStroke();
+//   fill(0);
+//   noStroke();
+//   triangle(-size/3.5, 30, 0, -size/3.5, -5, 35);
+//   triangle(size/3+250-10, 100-10, 200-10, size/3-40-10, 260-5, 6);
+//   fill(0);
+//   rect(-10, 5, size * 1.35, size * 0.15);
+
+
+
+//   pop();
+// }
+
+function leftEyebrow(x, y, size) {
+  push();
+  translate(x, y);
+
+  noStroke();
+  fill(255);
+  rect(0, 0, size * 1.3, size * 0.2);   
+
+  fill(255);
+  triangle( size/3, 40, 0, -size/3, 0, 40);                   
+  triangle(-size/3-250, 100, -200, size/3-40, -260, 0);        
+
+  fill(0);
+  triangle( size/3.5, 30, 0, -size/3.5, 5, 35);                
+  triangle(-size/3-240, 90, -190, size/3-50, -255, 6);         
+  rect(10, 5, size * 1.35, size * 0.15);                       
+
+  pop();
+}
+
+
 
 function eye(x, y, size) {
   push();
@@ -20,7 +66,7 @@ function eye(x, y, size) {
   let angle = atan2(dy, dx);
 
   // limit eye movement
-  let maxOffset = size * 0.85;        
+  let maxOffset = size * 0.;        
   let dist = min(maxOffset, mag(dx, dy)); 
 
   //var for the x/y angle of the mouse cursor
@@ -61,8 +107,9 @@ function setup() {
 
 function draw(){
 
-  eye(width/2-180, height/2+100,40)
-  eye(width/2+180, height/2+100,40)
+  eye(width/2-180, height/2-100,40)
+  eye(width/2+180, height/2-100,40)
+  // rightEyebrow(width/2+100, height/2-170,200)
   // face(width/2, height/2-50, 300, 380);
   // eye(width/2-70, height/2-50, 40);
   // eye(width/2+70, height/2-50, 40);
