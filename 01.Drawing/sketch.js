@@ -23,11 +23,12 @@ function eye(x, y, size) {
   let maxOffset = size * 0.85;        
   let dist = min(maxOffset, mag(dx, dy)); 
 
+  //var for the x/y angle of the mouse cursor
   let px = cos(angle) * dist;
   let py = sin(angle) * dist;
 
   
-
+  //pupil
   fill(255,60,60);
   rectMode(CENTER);
   rect(px, py, size * 0.7, size);   
@@ -60,8 +61,8 @@ function setup() {
 
 function draw(){
 
-  eye(width/2-180, height/2,40)
-  eye(width/2+180, height/2,40)
+  eye(width/2-180, height/2+100,40)
+  eye(width/2+180, height/2+100,40)
   // face(width/2, height/2-50, 300, 380);
   // eye(width/2-70, height/2-50, 40);
   // eye(width/2+70, height/2-50, 40);
