@@ -110,7 +110,7 @@ function setup() {
 }
 
 function preload() {
-  mp3 = loadSound('assets/song.mp3');   // path relative to index.html
+  mp3 = loadSound('assets/static.mp3');   // path relative to index.html
 }
 
 
@@ -118,6 +118,8 @@ function draw(){
   
   background(60);
   scream();
+  mp3.setVolume(0.01);   // optional
+  mp3.loop();
   rectMode(CENTER)
   fill(30)
   rect(width/2, height/2+200,450,630);
