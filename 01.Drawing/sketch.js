@@ -1,4 +1,5 @@
 let check = false
+let gunshot = false
 
 function eyebrow(x, y, size, angle = 0) {
   push();
@@ -19,13 +20,13 @@ function eye(x, y, size) {
   translate(x, y);
   noStroke();
 
-  // ---- white eye shape (unchanged) ----
+  //eye whites
   fill(155);
   triangle(-size - 50, 0, -50, -size, 0, size + 20);
   triangle(size + 50, 0, 50, -size, 0, size + 20);
   triangle(50, -size, -50, -size, 0, size + 20);
 
-  // ---- aim at mouse ----
+  //eye pupil looks at mouse cursor 
   let dx = mouseX - x;
   let dy = mouseY - y;
   let angle = atan2(dy, dx);
@@ -34,12 +35,12 @@ function eye(x, y, size) {
   let px = cos(angle) * dist;
   let py = sin(angle) * dist;
 
-  // ---- SCARED QUIVER ----
-  let jitter = size * 0.2;          // how far it can shake
+  //shakey eyes
+  let jitter = size * 0.2;         
   px += random(-jitter, jitter);
   py += random(-jitter, jitter);
 
-  // ---- draw pupil layers ----
+  //pupil
   fill(255);
   rectMode(CENTER);
   rect(px, py, size * 0.7, size);
@@ -50,6 +51,7 @@ function eye(x, y, size) {
   fill(0);
   rect(px, py, size * 0.2, size * 0.8);
 
+  //stopping the pupil crossing the eye
   fill(0)
   triangle(-size - 50, 0, -100, size+50, 0, size+20);
   triangle(size + 50, 0, 50, size+100, 0, size+20);
@@ -105,6 +107,8 @@ function crosshair(x, y) {
 }
 function preload() {
   mp3 = loadSound('assets/static.mp3');
+  end = loadSound('assets/death.mp3');
+  endMusic = loadSound('assets/music.mp3');
 }
 function setup() {
   createCanvas(2000, 1100);
@@ -124,6 +128,7 @@ function mousePressed() {
   // distance from mouse to circle centre
   if (dist(mouseX, mouseY, width / 2, height / 2 - 300) <= 30) {
     mp3.stop();
+    
     check = true;
        // silence immediately
   }
@@ -133,7 +138,7 @@ function mousePressed() {
 
 function draw(){
   if(check==false){
-  background(60);
+  background(50);
   scream();
   rectMode(CENTER)
   fill(30)
@@ -171,7 +176,20 @@ function draw(){
   eyebrow(width/2+180, height/2-225,210,30);
   crosshair(width/2, height/2-300)
   }else{
+    if(gunshot==false){
+      end.play()
+      endMusic.play()
+      gunshot = true
+    }
+    randomX = random(-100, 100);
+    randomY = random(-100, 100);
     background(20);
+    fill(255,0,0);
+    textStyle(BOLD)
+    textSize(150);
+    text("Suffering is poetic",width/6+randomX, height/2+randomY)
+  }
+
     
   }
 
@@ -179,5 +197,5 @@ function draw(){
 
   
   
-}
+
 
