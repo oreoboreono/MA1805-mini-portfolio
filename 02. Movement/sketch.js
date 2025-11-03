@@ -14,7 +14,7 @@ function setup() {
 
 function draw() {
   background(0);
-  image(earthImg,width/2,length/2)
+  image(mercuryPng,0,0);
 }
 
 
