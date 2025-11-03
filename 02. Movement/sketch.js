@@ -24,13 +24,28 @@ function mercury(){
   let x = centerX + radius+200 * cos(angleM);
   let y = centerY + radius+200 * sin(angleM);
   noFill()
-  stroke('orange')
+  stroke(100,50,0)
   circle(width/2,height/2,radius+350)
   
   angleM+=0.015*1.6075
   imageMode(CENTER);
   image(mercuryPng,x,y,50,50);
 
+   push();
+
+  drawingContext.shadowColor = color(255, 100, 100, 180); // orange-yellow
+  drawingContext.shadowBlur  = 180;                        // blur radius
+  imageMode(CENTER);
+  image(mercuryPng, x, y, 50, 50);
+  pop();
+
+  blendMode(ADD);
+  noStroke();
+  for (let r = 80; r > 0; r -= 6) {
+    fill(255, 180, 80, 20);
+    circle(x, y, r);
+  }
+  blendMode(BLEND);
   
 }
 
@@ -39,7 +54,7 @@ function venus(){
   let x = centerX + radius+350 * cos(angleV);
   let y = centerY + radius+350 * sin(angleV);
   noFill()
-  stroke('yellow')
+  stroke(100,100,0)
   circle(width/2,height/2,radius+650)
   angleV+=0.015*1.175
   imageMode(CENTER);
@@ -52,7 +67,7 @@ function earth(){
   let x = centerX + radius+500 * cos(angleE);
   let y = centerY + radius+500 * sin(angleE);
   noFill()
-  stroke(150,150,255)
+  stroke(80,80,185)
   circle(width/2,height/2,radius+950)
   angleE+=0.015
   imageMode(CENTER);
@@ -65,7 +80,7 @@ function mars(){
   let x = centerX + radius+670 * cos(angleMa);
   let y = centerY + radius+670 * sin(angleMa);
   noFill()
-  stroke('red')
+  stroke(100,0,0)
   circle(width/2,height/2,radius+1290)
   angleMa+=0.015*0.8085
   imageMode(CENTER);
