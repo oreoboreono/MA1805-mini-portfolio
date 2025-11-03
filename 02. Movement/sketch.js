@@ -1,9 +1,9 @@
 function preLoad(){
-  
-}
-
-function createEarth(x){
-
+  earthImg = loadImage('assets/Earth.png');
+  sunPng = loadImage('assets/Sun.png');
+  mercuryPng = loadImage('assets/Mercury.png');
+  venusPng = loadImage('assets/Venus.png');
+  marsPng = loadImage('assets/Mars.png');
 }
 
 
@@ -14,6 +14,7 @@ function setup() {
 
 function draw() {
   background(0);
+  image(earthImg,width/2,length/2)
 }
 
 
