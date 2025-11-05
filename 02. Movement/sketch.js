@@ -1,127 +1,171 @@
 function preload(){
-  earthPng = loadImage('assets/Earth.png');
-  sunPng = loadImage('assets/Sun.png');
-  mercuryPng = loadImage('assets/Mercury.png');
-  venusPng = loadImage('assets/Venus.png');
-  marsPng = loadImage('assets/Mars.png');
+  earthPng = loadImage('assets/Earth.png')
+  sunPng = loadImage('assets/Sun.png')
+  mercuryPng = loadImage('assets/Mercury.png')
+  venusPng = loadImage('assets/Venus.png')
+  marsPng = loadImage('assets/Mars.png')
+  cheer1 = loadSound('assets/yay1.mp3');
+  cheer2 = loadSound('assets/yay2.mp3');
+  cheer3 = loadSound('assets/yay3.mp3');
+  cheer4 = loadSound('assets/yay4.mp3');
+  cheer5 = loadSound('assets/yay5.mp3');
+  cheer6 = loadSound('assets/yay6.mp3');
 }
+  radius = 50
+  centerX = 700
+  centerY = 700
+  angleM = 0
+  angleV = 0
+  angleE = 0
+  angleMa = 0
+  currentYear = 0
+  yearAngle = 0
 
+ rAngle = 0
+ isSpin = true
+ spinSpeed = 0.3
+
+ rollM = 0
+ rollV = 0
+ rollE = 0
+ rollMa = 0
 
 function setup() {
   createCanvas(1500, 1500);
-  radius = 50;
-  centerX = 700;
-  centerY = 700;
-  angleM = 0;
-  angleV = 0;
-  angleE = 0;
-  angleMa = 0;
-
 }
 
-function planet(distance, angle, speed, planet, colour){
+function planet(planet,distance, angle, speed,R,G,B,roll){
 
- let x = centerX + radius+distance * cos(angle);
- let y = centerY + radius+200 * sin(angle);
- angle+=0.015*speed
- imageMode(CENTER);
- image(planet,x,y,50,50);
+ x = centerX + radius+distance * cos(angle)
+ y = centerY + radius+distance * sin(angle)
 
-
-}
-
-
-
-
-
-
-function mercury(){
-  
-  let x = centerX + radius+200 * cos(angleM);
-  let y = centerY + radius+200 * sin(angleM);
-  noFill()
-  stroke(100,50,0)
-  circle(width/2,height/2,radius+350)
-  
-  angleM+=0.015*1.6075
-  imageMode(CENTER);
-  image(mercuryPng,x,y,50,50);
-
-   push();
-
-  drawingContext.shadowColor = color(255, 100, 100, 180); // orange-yellow
-  drawingContext.shadowBlur  = 180;                        // blur radius
-  imageMode(CENTER);
-  image(mercuryPng, x, y, 50, 50);
-  pop();
+ noFill()
+ stroke(R,G,B)
+ circle(width/2,height/2,radius+(distance*2-50))
 
   blendMode(ADD);
-  noStroke();
-  for (let r = 80; r > 0; r -= 6) {
-    fill(255, 180, 80, 20);
-    circle(x, y, r);
+  noStroke()
+  for (let r = 180; r > 0; r -= 3) {
+    fill(R, G, B, 5)
+    circle(x, y, r)
   }
-  blendMode(BLEND);
-  
+  blendMode(BLEND)
+
+ angle+=0.015*speed
+
+ push()
+ translate(x, y)
+ rotate(roll)
+ imageMode(CENTER)
+ image(planet,0,0,80,80)
+ pop();
+
+ return angle;
+
 }
 
-function venus(){
-  
-  let x = centerX + radius+350 * cos(angleV);
-  let y = centerY + radius+350 * sin(angleV);
-  noFill()
-  stroke(100,100,0)
-  circle(width/2,height/2,radius+650)
-  angleV+=0.015*1.175
-  imageMode(CENTER);
-  image(venusPng,x,y,50,50);
-  
+function yay(){
+  x = random(0,6)  
+   switch(x) {
+    case 0:
+      cheer1.setVolume(0.4);
+      cheer1.play();
+      break;
+    case 1:
+      cheer2.setVolume(0.4);
+      cheer2.play();
+      break;
+    case 2:
+      cheer3.setVolume(0.4);
+      cheer3.play();
+      break;
+    case 3:
+      cheer4.setVolume(0.4);
+      cheer4.play();
+      break;
+    case 4:
+      cheer5.setVolume(0.4);
+      cheer5.play();
+      break;
+    case 5:
+      cheer6.setVolume(0.4);
+      cheer6.play();
+      break;
+   }
+
+
 }
 
-function earth(){
-  
-  let x = centerX + radius+500 * cos(angleE);
-  let y = centerY + radius+500 * sin(angleE);
-  noFill()
-  stroke(80,80,185)
-  circle(width/2,height/2,radius+950)
-  angleE+=0.015
-  imageMode(CENTER);
-  image(earthPng,x,y,50,50);
-  
-}
 
-function mars(){
-  
-  let x = centerX + radius+670 * cos(angleMa);
-  let y = centerY + radius+670 * sin(angleMa);
-  noFill()
-  stroke(100,0,0)
-  circle(width/2,height/2,radius+1290)
-  angleMa+=0.015*0.8085
-  imageMode(CENTER);
-  image(marsPng,x,y,50,50);
-  
-}
+
 
 
 
 function draw() {
   background(0);
-  mercury();
-  venus();
-  earth();
-  mars();
   
+  rollM += 0.4;
+  rollV += 0.3;
+  rollE += 0.2;
+  rollMa += 0.1;
   
-  image(sunPng,width/2,height/2,300,300);
-  // imageMode(CENTER);
-  // image(mercuryPng,width/2,height/2-200,50,50);
-  // image(venusPng,width/2,height/2-350,50,50);
-  // image(earthPng,width/2,height/2-500,50,50);
-  // image(marsPng,width/2,height/2-650,50,50);
+  angleM = planet(mercuryPng,200,angleM,1.6075,120,60,0,rollM)
+  angleV = planet(venusPng,350,angleV,1.175,100,100,0,rollV)
+  angleE = planet(earthPng,500,angleE,1,80,80,185,rollE)
+  angleMa = planet(marsPng,650,angleMa,0.8085,110,0,0,rollMa)
+  
+  push();
+  blendMode(ADD);          
+  noStroke();
+  
+  for (let r = 1000; r > 0; r -= 10) {
+    fill(255, 0, 0, 1) 
+    circle(width/2, height/2, r+random(-30,30))
+  }
+
+  for (let r = 500; r > 0; r -= 10) {
+    fill(255, 255, 0, 3) 
+    circle(width/2, height/2, r+random(-20,20))
+  }
+  pop();
+
+years = floor(angleE/TWO_PI)
+
+textStyle(BOLD)
+textSize(40)
+fill('white')
+
+if(currentYear !== years && !isSpin){
+  cheer()
+  isSpin = true
+  rAngle = 0
+  currentYear = years
 }
 
+if(isSpin){
+  push()
+  translate(width/2-500, height/2-680)
+  rotate(rAngle)
+  textAlign(CENTER, CENTER)
+  text("Current Year: "+ (2025+years), 0, 0)
+  pop()
 
+  push()
+  imageMode(CENTER)
+  translate(width/2, height/2)
+  rotate(rAngle)
+  
+  image(sunPng,0,0,300,300)
+  pop();
 
-
+  rAngle += spinSpeed
+  if (rAngle >= TWO_PI) {
+    rAngle = 0
+    isSpin = false
+  }
+} else {
+  text("Current Year: "+ (2025+years), width/2-680, height/2-680)
+  imageMode(CENTER);
+  image(sunPng,height/2,width/2,300,300)
+}
+}
