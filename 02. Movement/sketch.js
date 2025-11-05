@@ -1,16 +1,23 @@
+cheers = []
 function preload(){
   earthPng = loadImage('assets/Earth.png')
   sunPng = loadImage('assets/Sun.png')
   mercuryPng = loadImage('assets/Mercury.png')
   venusPng = loadImage('assets/Venus.png')
   marsPng = loadImage('assets/Mars.png')
-  cheer1 = loadSound('assets/yay1.mp3');
-  cheer2 = loadSound('assets/yay2.mp3');
-  cheer3 = loadSound('assets/yay3.mp3');
-  cheer4 = loadSound('assets/yay4.mp3');
-  cheer5 = loadSound('assets/yay5.mp3');
-  cheer6 = loadSound('assets/yay6.mp3');
+  confettis = loadImage('assets/Confetti.gif')
+  cheers[0] = loadSound('assets/yay1.mp3');
+  cheers[1] = loadSound('assets/yay2.mp3');
+  cheers[2] = loadSound('assets/yay3.mp3');
+  cheers[3] = loadSound('assets/yay4.mp3');
+  cheers[4] = loadSound('assets/yay5.mp3');
+  cheers[5] = loadSound('assets/yay6.mp3');
 }
+
+
+function setup() {
+  createCanvas(1500, 1500);
+  
   radius = 50
   centerX = 700
   centerY = 700
@@ -30,8 +37,13 @@ function preload(){
  rollE = 0
  rollMa = 0
 
-function setup() {
-  createCanvas(1500, 1500);
+ iPrevious = 10
+ iBeforePrevious = 11
+
+ for(i = 0; i<6;i++){
+  cheers[i].setVolume(0.5)
+ }
+  
 }
 
 function planet(planet,distance, angle, speed,R,G,B,roll){
@@ -65,41 +77,18 @@ function planet(planet,distance, angle, speed,R,G,B,roll){
 }
 
 function yay(){
-  x = random(0,6)  
-   switch(x) {
-    case 0:
-      cheer1.setVolume(0.4);
-      cheer1.play();
-      break;
-    case 1:
-      cheer2.setVolume(0.4);
-      cheer2.play();
-      break;
-    case 2:
-      cheer3.setVolume(0.4);
-      cheer3.play();
-      break;
-    case 3:
-      cheer4.setVolume(0.4);
-      cheer4.play();
-      break;
-    case 4:
-      cheer5.setVolume(0.4);
-      cheer5.play();
-      break;
-    case 5:
-      cheer6.setVolume(0.4);
-      cheer6.play();
-      break;
-   }
-
+  
+  randomI = floor(random(cheers.length))
+  while(randomI==iPrevious || randomI == iBeforePrevious ){
+    randomI = floor(random(cheers.length))
+  }
+  cheers[randomI].setVolume(0.5)
+  cheers[randomI].play()
+  iPrevious = randomI
+  iBeforePrevious = iPrevious
+  
 
 }
-
-
-
-
-
 
 function draw() {
   background(0);
@@ -136,7 +125,7 @@ textSize(40)
 fill('white')
 
 if(currentYear !== years && !isSpin){
-  cheer()
+  yay()
   isSpin = true
   rAngle = 0
   currentYear = years
