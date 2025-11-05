@@ -5,7 +5,6 @@ function preload(){
   mercuryPng = loadImage('assets/Mercury.png')
   venusPng = loadImage('assets/Venus.png')
   marsPng = loadImage('assets/Mars.png')
-  confettis = loadImage('assets/Confetti.gif')
   cheers[0] = loadSound('assets/yay1.mp3');
   cheers[1] = loadSound('assets/yay2.mp3');
   cheers[2] = loadSound('assets/yay3.mp3');
