@@ -19,6 +19,22 @@ function setup() {
 
 }
 
+function planet(distance, angle, speed, planet, colour){
+
+ let x = centerX + radius+distance * cos(angle);
+ let y = centerY + radius+200 * sin(angle);
+ angle+=0.015*speed
+ imageMode(CENTER);
+ image(planet,x,y,50,50);
+
+
+}
+
+
+
+
+
+
 function mercury(){
   
   let x = centerX + radius+200 * cos(angleM);
