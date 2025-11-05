@@ -15,10 +15,10 @@ function preload(){
 
 
 function setup() {
-  createCanvas(1500, 1500);
+  createCanvas(3000, 1500);
   
   radius = 50
-  centerX = 700
+  centerX = 1450
   centerY = 700
   angleM = 0
   angleV = 0
@@ -154,6 +154,6 @@ if(isSpin){
 } else {
   text("Current Year: "+ (2025+years), width/2-680, height/2-680)
   imageMode(CENTER);
-  image(sunPng,height/2,width/2,300,300)
+  image(sunPng,1500,750,300,300)
 }
 }
