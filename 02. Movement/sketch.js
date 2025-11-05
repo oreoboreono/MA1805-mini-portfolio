@@ -141,7 +141,7 @@ if(isSpin){
   push()
   imageMode(CENTER)
   translate(width/2, height/2)
-  rotate(rAngle)
+  rotate(rAngle) 
   
   image(sunPng,0,0,300,300)
   pop();
