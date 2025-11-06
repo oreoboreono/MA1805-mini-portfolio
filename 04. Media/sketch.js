@@ -1,46 +1,44 @@
-let img;
-let rgb = [255,0,0]
-let select = 0;
 
-function preload(){
-  img = loadImage('assets/grainyImage.png');
-
-}
 
 function setup() {
-  createCanvas(401, 400);
+  createCanvas(1000, 1000);
+  bw = false;
+  
+  capture = createCapture(VIDEO);
+  capture.hide();
+
+  skeletonMp4 = createVideo('/assets/skeleton.mp4');
+  skeletonMp4.hide();
+  skeletonMp4.size(windowWidth+300, windowHeight);
+
+  
+
+
+  // create a button on the left
+  bwButton = createButton('DISTRACTION!');
+  bwButton.position(10, height / 2 + 100);
+  bwButton.style('font-size', '80px');
+  bwButton.mousePressed(pause);
 }
 
 
-function draw() {
-  background(220);
-  image(img, 0, 0, width, height);
-
-
-  if(select == 0){
-    rgb = [255,0,0]
-  }else{
-    rgb = [0,255,0]
-  }
-  fill(rgb);
-
-
-  let i = mouseY;
-  while (i<=500){
-    let r = random(30)
-    circle(i,i+r,mouseX+r);
-    i+=3;
-
-  }
-
-  text(select, 100, 100)
+function pause() {
+  bw = !bw;
+  bwButton.html(bw ? 'Color (Resume)' : 'Black & White');
+  capture.pause();
+  bwButton.remove()
   
 }
 
-function mouseClicked(){
-  if(select==0){
-    select = 1;
-  }else{
-    select = 0;
+function draw() {
+  background(0);
+  let imgH = width * capture.height / capture.width;
+  image(capture, 0, 100, width, imgH);
+
+  if (bw) {
+    filter(GRAY);
+     skeletonMp4.play
+     
   }
 }
+

@@ -3,31 +3,21 @@ function preload(){
   bananaPng = loadImage('assets/banana.png')
   beefPng = loadImage('assets/beef.png')
   coinPng = loadImage('assets/coin.png')
-  coinbagPng = loadImage('assets/coinbag.png')
   davidPng = loadImage('assets/david.png')
   diamondPng = loadImage('assets/diamond.png')
   forkPng = loadImage('assets/fork.png')
   johnPng = loadImage('assets/john.png')
-  meatPng = loadImage('assets/meat.png')
   orangePng = loadImage('assets/orange.png')
   pearPng = loadImage('assets/pear.png')
   porkPng = loadImage('assets/pork.png')
   stevePng = loadImage('assets/steve.png')
   munchMp3 = loadSound('assets/munch.mp3')
-  
-
 }
-
-
-
 
 function setup() {
   fruits = [applePng,bananaPng,orangePng,pearPng];
-  meats = [porkPng,meatPng,beefPng]
-  theRich = [coinPng, coinbagPng, diamondPng, davidPng, johnPng, stevePng]
-
-
-
+  meats = [porkPng,beefPng]
+  theRich = [coinPng, diamondPng, davidPng, johnPng, stevePng]
 
   createCanvas(1000, 800)
   foodFlag = 0
@@ -41,11 +31,8 @@ function setup() {
   moreFoodBtn = new RedButton()
   munchMp3.setVolume(0.5);
   snacksEaten = 0
-
-
-
-
 }
+
 
 function draw() {
   background(0)
