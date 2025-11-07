@@ -16,7 +16,7 @@ I tried to represent the feeling of being helpless and pitted against overwhelmi
 
 #2. Movement
 
-I created motion through an animated diagram of the rocky planets orbiting the sun. My goal was to highlight the pattern of passing years. I wanted to show how each year can feel so different and is often celebrated—l represented by a counter that spins and a cheer sound effect that plays with each passing year. However, I also wanted to contrast this with the idea that, as time passes, individual years seem inconsequential on a cosmic scale, blending into one another. One thing I discovered was the beauty of the planets' rotations, achieved through the rhythm of their spins.
+I created motion through an animated diagram of the rocky planets orbiting the sun. My goal was to highlight the pattern of passing years. I wanted to show how each year can feel so different and is often celebrated l represented by a counter that spins and a cheer sound effect that plays with each passing year. However, I also wanted to contrast this with the idea that, as time passes, individual years seem inconsequential on a cosmic scale, blending into one another. One thing I discovered was the beauty of the planets' rotations, achieved through the rhythm of their spins.
 
 #3. Multiples
 
